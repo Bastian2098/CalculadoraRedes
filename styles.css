@@ -19,51 +19,71 @@ html::-webkit-scrollbar {
 body {
     background-color: #e1bde6af; /* Color de fondo */
 }
+header h1{
+    color: #fff;
+}
 #header-buttons {
-    margin-left: 15px; 
-    margin-top: 1%; 
-    display: flex; 
-    align-items: center; 
-    position: relative;
-    padding: 15px 30px;
-    letter-spacing: 4px;
-    font-size: 24px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: 0.2s;
+    display: flex;
+    align-items: center;
 }
 
-
-#header-buttons button {
-    margin-right: 10px; 
-    margin-right: 10px; 
-    background: rgb(179, 125, 184);
-    box-shadow: 0 0 10px #a945c7;
+#toggle-menu {
+    width: 100px; /* Ancho fijo para el botón */
+    border-radius: 15px;
+    background:rgb(255, 255, 255);
     transition-delay: 1s;
+    margin-right: 10px; /* Añade un margen derecho */
 }
 
+#header-buttons ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    margin: 0;
+    padding: 0;
+    width: 150px; /* Ancho fijo para la lista desplegable */
+}
+
+#header-buttons ul li {
+    display: block; 
+}
+
+#header-buttons ul li a {
+    display: block;
+    padding: 5px 10px; 
+    text-decoration: none;
+    color: #ffffff;
+    background-color:  rgba(255, 183, 95); 
+    border-radius: 5px; 
+    margin-right: 10px; 
+}
+
+#header-buttons ul li a:hover {
+    background-color:  rgba(255, 183, 95); /* Cambia el color de fondo al pasar el ratón */
+}
+
+.hidden {
+    display: none; 
+}
 
 
 #sidebar {
-    position: fixed; /* Cambia de absolute a fixed */
-    top: 125px; /* Ajusta la parte superior para evitar superposiciones */
+    position: fixed; 
+    top: 125px; 
     left: 0;
     width: 200px;
-    height: calc(100% - 80px); /* Ajusta la altura para que no se superponga con el encabezado */
+    height: calc(100% - 80px); 
     background-color: #f0f0f0;
     border-right: 1px solid #ccc;
 
 }
 .lienzo {
-align-items: flex-start; /* Alinea los elementos en la parte superior */
-    position: fixed; /* Cambia de absolute a fixed */
-    top: 125px; /* Ajusta la parte superior para evitar superposiciones */
+align-items: flex-start;
+    position: fixed; 
     left: 170px;
     width: calc(100% - 200px);
-    height: calc(100% - 150px); /* Ajusta la altura para que no se superponga con el encabezado y el pie de página */
+    height: calc(100% - 150px);
     background-color: #fff;
     border: 1px solid #ccc;
-    overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+    overflow-y: auto; 
 
 }
 
@@ -150,7 +170,7 @@ body {
 }
 
 #main-header {
-    background-color: rgb(179, 125, 184); /* Color principal de la universidad */
+    background: url(img/fondoAntena.jpg); /* Color principal de la universidad */
     color: black;
     height: 100px; /* Aumenta la altura del encabezado */
     display: flex;
