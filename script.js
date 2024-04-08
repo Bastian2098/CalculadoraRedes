@@ -11,14 +11,14 @@ function ocultarDialogo() {
 let simulaciones = [];
 
 function calcularPIRE(potencia, ganancia) {
-  return 10 * Math.log10(potencia) + ganancia;
+  return (10 * Math.log10(potencia*1000)) + ganancia;
 }
 
 function verificarCriterio(pire, frecuencia, altura) {
   let criterio = "";
   let resCriterio = "";
 
-  if (pire <= 10) {
+  if (pire <= 40) {
     criterio =
       "Estación base instalada de manera que la parte más baja del sistema irradiante (antena(s)) está a una altura mínima de 2.2 metros por encima del piso de la zona de público en general.";
     if (altura > 2.2) {
@@ -27,11 +27,11 @@ function verificarCriterio(pire, frecuencia, altura) {
     } else {
       resCriterio += "\n\tCumple el criterio de instalacion";
     }
-  } else if (pire <= 100) {
+  } else if (pire <= 50) {
     criterio =
       "La parte más baja del sistema irradiante (antena(s)) está a una altura mínima de 2.5 metros por encima del piso de la zona de público en general.\n\
-                        \nLa distancia mínima a zonas accesibles al público en general en la dirección del lóbulo principal es de 2 metros para frecuencias menores a 1500 MHz o de 1 metro para frecuencias mayores o iguales a 1500 MHz.\n\
-                        \n 	Ninguna otra fuente de radiofrecuencia con PIRE por encima de 10 W se encuentra a una distancia de hasta 10 metros en frecuencias menores a 1500 MHz o 5 metros para frecuencias mayores o iguales a 1500 MHz en la dirección del lóbulo principal(2) y una distancia de hasta 2 metros en otras direcciones para cualquier rango de frecuencia(3).";
+      \nLa distancia mínima a zonas accesibles al público en general en la dirección del lóbulo principal es de 2 metros para frecuencias menores a 1500 MHz o de 1 metro para frecuencias mayores o iguales a 1500 MHz.\n\
+      \nNinguna otra fuente de radiofrecuencia con PIRE por encima de 10 W se encuentra a una distancia de hasta 10 metros en frecuencias menores a 1500 MHz o 5 metros para frecuencias mayores o iguales a 1500 MHz en la dirección del lóbulo principal(2) y una distancia de hasta 2 metros en otras direcciones para cualquier rango de frecuencia(3).";
     if (altura > 2.5) {
       resCriterio +=
         "\n\tNo cumple el criterio de instalacion, altura menor a 2.5m";
