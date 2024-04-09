@@ -2,6 +2,8 @@
 
 *{
     font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    padding: 0px;
 
 }
 
@@ -17,22 +19,24 @@ html::-webkit-scrollbar {
 }
 
 body {
-    background-color: #e1bde6af; /* Color de fondo */
+    background-color: #f9f1faaf; /* Color de fondo */
+    height: 100%;
+    width: 100%;
 }
 header h1{
     color: #fff;
 }
 #header-buttons {
     display: flex;
-    align-items: center;
 }
 
 #toggle-menu {
-    width: 100px; /* Ancho fijo para el botón */
+    width: 100px; 
     border-radius: 15px;
     background:rgb(255, 255, 255);
     transition-delay: 1s;
-    margin-right: 10px; /* Añade un margen derecho */
+    margin-right: 50px;
+    cursor: pointer;
 }
 
 #header-buttons ul {
@@ -40,20 +44,28 @@ header h1{
     margin: 0;
     padding: 0;
     width: 150px; /* Ancho fijo para la lista desplegable */
+    position: absolute;
+    background-color: #fff; /* Fondo del menú */
+    border: 1px solid #ccc; /* Borde del menú */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    z-index: 1000; /* Asegura que el menú esté sobre otros elementos */
+    display: none; /* Oculta el menú por defecto */
 }
-
 #header-buttons ul li {
-    display: block; 
+    display: block;
+    margin-left: 0; /* Elimina el margen izquierdo */
 }
 
 #header-buttons ul li a {
     display: block;
-    padding: 5px 10px; 
+    padding: 10px; 
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     background-color:  rgba(255, 183, 95); 
+    border: 1px solid #fff;
     border-radius: 5px; 
-    margin-right: 10px; 
+    margin-right: 1px; 
 }
 
 #header-buttons ul li a:hover {
@@ -64,12 +76,14 @@ header h1{
     display: none; 
 }
 
-
+.content{
+    height: 2000px;
+}
 #sidebar {
     position: fixed; 
     top: 125px; 
     left: 0;
-    width: 200px;
+    width:100px;
     height: calc(100% - 80px); 
     background-color: #f0f0f0;
     border-right: 1px solid #ccc;
@@ -152,12 +166,6 @@ align-items: flex-start;
     border: 1px solid #ccc;
     z-index: 9999;
 }
-body {
-
-    margin: 0;
-    padding: 0;
-}
-
 
 #logo-header img {
     height: 100px; /* Modifica el tamaño del logo */
@@ -170,17 +178,18 @@ body {
 }
 
 #main-header {
-    background: url(img/fondoAntena.jpg); /* Color principal de la universidad */
+    background: rgb(182,23,166);
+    background: linear-gradient(0deg,  rgba(210,39,113,1) 5%, rgba(157,0,26,1) 52%, rgba(91,0,30,1) 100%);
     color: black;
-    height: 100px; /* Aumenta la altura del encabezado */
+    height: 100px; 
     display: flex;
     width: 97.9%;
     top: 0px;
     right: 0px;
-    align-items: center; /* Centra verticalmente los elementos */
-    justify-content: space-between; /* Distribuye los elementos horizontalmente */
-    padding: 0 20px; /* Añade espacio interno */
-    margin: 0; /* Añade margen */
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 20px; 
+    margin: 0; 
 }
 
 
@@ -214,11 +223,14 @@ nav ul li a:hover {
 #main-content {
     display: flex;
     flex-direction: row;
+    z-index: 0; /* Asigna un z-index más bajo que el del footer */
+    margin-bottom: 100px;
+    
 }
 
 #centro-container {
     position: fixed;
-    top: 50%;
+    margin-top: 100px;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -230,14 +242,11 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
-
-
-
 #simulaciones {
     flex: 1;
     padding: 20px;
     border-left: 1px solid #ccc;
-    overflow-y: auto;
+
 }
 .nombre-simulacion {
     display: block;
@@ -247,6 +256,8 @@ nav ul li a:hover {
     padding: 5px 10px;
     cursor: pointer;
 }
+
+
 .simulacion {
     margin-bottom: 20px;
 }
@@ -285,67 +296,48 @@ nav ul li a:hover {
     display: flex; /* Utilizar flexbox para alinear los elementos horizontalmente */
 }
 
-footer{
-    background: url(img/fondoAntena.jpg)
+footer {
+    position: fixed;
+    font-size: 12px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(91,0,30);
+    background: linear-gradient(0deg, rgba(91,0,30,1) 0%, rgba(157,0,26,1) 50%, rgba(210,39,113,1) 100%);
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
 
-.pie-pagina{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    
+body:not(:hover) footer {
+    opacity: 0;
 }
-.pie-pagina .grupo-1{
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap:50px;
-    padding: 10px 0px;
-}
-.pie-pagina .grupo-1 .box figure{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.pie-pagina .grupo-1 .box figure img{
-    width: 250px;
-}
-.pie-pagina .grupo-1 .box h2{
-    color: #fff;
-    margin-bottom: 10px;
-    font-size: 15px;
-}
-.pie-pagina .grupo-1 .box p{
-    color: #efefef;
-    margin-bottom: 10px;
-}
-.pie-pagina .grupo-1 .red-social a{
-    display: inline-block;
-    text-decoration: none;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
-    color: #fff;
-    margin-right: 10px;
-    background-color: #0d2033;
+
+
+.columna {
+    flex: 1;
+    padding: 20px;
     text-align: center;
-    transition: all 300ms ease;
 }
-.pie-pagina .grupo-1 .red-social a:hover{
-    color: aqua;
+
+.columna img {
+    max-width: 250px;
 }
-.pie-pagina .grupo-2{
-    padding: 10px 10px;
-    text-align: center;
+
+.columna p {
+    line-height: 1.5;
+    margin: 0;
+}
+
+a {
     color: #fff;
 }
-.pie-pagina .grupo-2 small{
-    font-size: 12px;
-}
+
+
+
 
 
 

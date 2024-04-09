@@ -303,6 +303,8 @@ function obtenerImagen(patronRadiacion) {
     return "img/antenna.png";
   }
 }
+const formulario = document.getElementById('formulario');
+
 
 document
   .getElementById("formulario")
@@ -352,3 +354,31 @@ document
       lienzo.style.display = "block";
     }
   });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var menuButton = document.getElementById("toggle-menu");
+    var menuList = document.getElementById("header-buttons").getElementsByTagName("ul")[0];
+    
+    // Event listener para abrir y cerrar la lista de opciones del menú
+    menuButton.addEventListener("click", function() {
+        if (menuList.style.display === "block") {
+            menuList.style.display = "none";
+        } else {
+            menuList.style.display = "block";
+        }
+    });
+
+    // Event listener para cerrar la lista de opciones del menú cuando se hace clic fuera de ella
+    document.addEventListener("click", function(event) {
+        var targetElement = event.target;
+        if (targetElement !== menuButton && !menuList.contains(targetElement)) {
+            menuList.style.display = "none";
+        }
+    });
+});
+
+
+
+
+
+
