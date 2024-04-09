@@ -21,24 +21,24 @@ function verificarCriterio(pire, frecuencia, altura) {
   if (pire <= 40) {
     criterio =
       "Estación base instalada de manera que la parte más baja del sistema irradiante (antena(s)) está a una altura mínima de 2.2 metros por encima del piso de la zona de público en general.";
-    if (altura > 2.2) {
+    if (altura >= 2.2 && altura < 2.5) {
       resCriterio +=
-        "\n\tNo cumple el criterio de instalacion, altura menor a 2.2m";
+        "\n\tCumple el criterio de instalacion";
     } else {
-      resCriterio += "\n\tCumple el criterio de instalacion";
+      resCriterio += "\n\tNo cumple el criterio de instalacion, altura menor a 2.2m o mayor a 2.5m";
     }
   } else if (pire <= 50) {
     criterio =
       "La parte más baja del sistema irradiante (antena(s)) está a una altura mínima de 2.5 metros por encima del piso de la zona de público en general.\n\
       \nLa distancia mínima a zonas accesibles al público en general en la dirección del lóbulo principal es de 2 metros para frecuencias menores a 1500 MHz o de 1 metro para frecuencias mayores o iguales a 1500 MHz.\n\
       \nNinguna otra fuente de radiofrecuencia con PIRE por encima de 10 W se encuentra a una distancia de hasta 10 metros en frecuencias menores a 1500 MHz o 5 metros para frecuencias mayores o iguales a 1500 MHz en la dirección del lóbulo principal(2) y una distancia de hasta 2 metros en otras direcciones para cualquier rango de frecuencia(3).";
-    if (altura > 2.5) {
+    if (altura >= 2.5) {
       resCriterio +=
-        "\n\tNo cumple el criterio de instalacion, altura menor a 2.5m";
+        "\n\tCumple el criterio de instalacion";
     } else {
-      resCriterio += "\n\tCumple el criterio de instalacion";
+      resCriterio += "\n\tNo cumple el criterio de instalacion, altura menor a 2.5m";
     }
-    if (frecuencia <= 1500) {
+    if (frecuencia < 1500) {
       criterio +=
         "\n\tDistancia mínima a zonas accesibles al público en general en la dirección del lóbulo principal es de 2 metros";
     } else
@@ -76,12 +76,12 @@ function requiereMedicion(pire, potencia, ganancia) {
 }
 
 function limitePoblacional(frecuencia, pire) {
-  const f = hertzToMegahertz(frecuencia);
-  if (f >= 30 || f < 400) {
+  //const f = hertzToMegahertz(frecuencia);
+  if (frecuencia >= 30 || frecuencia < 400) {
     return 0.319 * Math.sqrt(pire);
-  } else if (f >= 400 || f < 2000) {
-    return 6.38 * Math.sqrt(pire / f);
-  } else if (f >= 2000 || f < 300000) {
+  } else if (frecuencia >= 400 || frecuencia < 2000) {
+    return 6.38 * Math.sqrt(pire / frecuencia);
+  } else if (frecuencia >= 2000 || frecuencia < 300000) {
     return 0.143 * Math.sqrt(pire);
   } else {
     return null;
@@ -89,12 +89,12 @@ function limitePoblacional(frecuencia, pire) {
 }
 
 function limiteOcupacional(frecuencia, pire) {
-  const f = hertzToMegahertz(frecuencia);
-  if (f >= 30 || f < 400) {
+  //const f = hertzToMegahertz(frecuencia);
+  if (frecuencia >= 30 || frecuencia < 400) {
     return 0.143 * Math.sqrt(pire);
-  } else if (f >= 400 || f < 2000) {
-    return 2.92 * Math.sqrt(pire / f);
-  } else if (f >= 2000 || f < 300000) {
+  } else if (frecuencia >= 400 || frecuencia < 2000) {
+    return 2.92 * Math.sqrt(pire / frecuencia);
+  } else if (frecuencia >= 2000 || frecuencia < 300000) {
     return 0.0638 * Math.sqrt(pire);
   } else {
     return null;
